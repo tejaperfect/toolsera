@@ -2568,4 +2568,35 @@ body.dark-mode .tooltip:after {
     border-color: #475569 transparent transparent transparent;
 }
 
+/* SEO-focused Benefits */
+.seo-benefits {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin: 25px 0;
+}
+
+.benefit-tag {
+    background-color: #f0f5ff;
+    color: var(--primary-dark);
+    border-radius: var(--border-radius-full);
+    padding: 10px 16px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.1);
+}
+
+.benefit-tag i {
+    color: var(--success-color);
+}
+
+body.dark-mode .benefit-tag {
+    background-color: #1e293b;
+    color: #e2e8f0;
+}
+
 /* ... existing code ... */ 
