@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tools | Name-Toolsera</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Name-Toolsera</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="tools.html" class="active">Tools</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="tools-header">
+        <div class="container">
+            <h1>Our Tools Collection</h1>
+            <p>Free online tools to make your work easier and more productive</p>
+        </div>
+    </section>
+
+    <section class="tools-list">
+        <div class="container">
+            <div class="categories">
+                <button class="category-btn active" data-category="all">All Tools</button>
+                <button class="category-btn" data-category="image">Image</button>
+                <button class="category-btn" data-category="pdf">PDF</button>
+                <button class="category-btn" data-category="text">Text</button>
+                <button class="category-btn" data-category="code">Code</button>
+            </div>
+            
+            <div class="tools-grid">
+                <div class="tool-card" data-category="image">
+                    <div class="tool-icon">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <h3>Image Compressor</h3>
+                    <p>Compress your images without losing quality</p>
+                    <a href="image-compressor.html" class="btn">Use Now</a>
+                </div>
+                
+                <div class="tool-card coming-soon" data-category="image">
+                    <div class="tool-icon">
+                        <i class="fas fa-crop"></i>
+                    </div>
+                    <h3>Image Cropper</h3>
+                    <p>Coming soon...</p>
+                </div>
+                
+                <div class="tool-card coming-soon" data-category="image">
+                    <div class="tool-icon">
+                        <i class="fas fa-object-group"></i>
+                    </div>
+                    <h3>Image Resizer</h3>
+                    <p>Coming soon...</p>
+                </div>
+                
+                <div class="tool-card coming-soon" data-category="pdf">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3>PDF Compressor</h3>
+                    <p>Coming soon...</p>
+                </div>
+                
+                <div class="tool-card coming-soon" data-category="pdf">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-medical"></i>
+                    </div>
+                    <h3>PDF Merger</h3>
+                    <p>Coming soon...</p>
+                </div>
+                
+                <div class="tool-card coming-soon" data-category="text">
+                    <div class="tool-icon">
+                        <i class="fas fa-text-height"></i>
+                    </div>
+                    <h3>Text Converter</h3>
+                    <p>Coming soon...</p>
+                </div>
+                
+                <div class="tool-card coming-soon" data-category="code">
+                    <div class="tool-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Code Formatter</h3>
+                    <p>Coming soon...</p>
+                </div>
+                
+                <div class="tool-card coming-soon" data-category="code">
+                    <div class="tool-icon">
+                        <i class="fas fa-terminal"></i>
+                    </div>
+                    <h3>JSON Validator</h3>
+                    <p>Coming soon...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Name-Toolsera. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Category filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            const toolCards = document.querySelectorAll('.tool-card');
+            
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const category = this.getAttribute('data-category');
+                    
+                    // Show/hide tool cards based on category
+                    toolCards.forEach(card => {
+                        if (category === 'all' || card.getAttribute('data-category') === category) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

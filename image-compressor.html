@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Compressor | Toolsera</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html" class="logo-link">
+                    <span class="logo-icon"><i class="fas fa-toolbox"></i></span>
+                    <h1>Toolsera</h1>
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="tools.html" class="active"><i class="fas fa-tools"></i> Tools</a></li>
+                    <li><a href="index.html#about"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li><a href="index.html#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+                <div class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </div>
+            </nav>
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section class="tool-section">
+        <div class="container">
+            <div class="tool-header">
+                <div class="tool-badge"><i class="fas fa-compress-alt"></i></div>
+                <h1>Image Compressor</h1>
+                <p>Optimize your images without losing quality. Ideal for websites, social media, and email attachments.</p>
+                
+                <!-- Workflow Steps Indicator -->
+                <div class="workflow-steps" id="workflowSteps">
+                    <div class="workflow-step active" data-step="1">
+                        <div class="step-number"><i class="fas fa-upload"></i></div>
+                        <div class="step-label">Upload</div>
+                    </div>
+                    <div class="workflow-connector"></div>
+                    <div class="workflow-step" data-step="2">
+                        <div class="step-number"><i class="fas fa-sliders-h"></i></div>
+                        <div class="step-label">Configure</div>
+                    </div>
+                    <div class="workflow-connector"></div>
+                    <div class="workflow-step" data-step="3">
+                        <div class="step-number"><i class="fas fa-compress-alt"></i></div>
+                        <div class="step-label">Compress</div>
+                    </div>
+                    <div class="workflow-connector"></div>
+                    <div class="workflow-step" data-step="4">
+                        <div class="step-number"><i class="fas fa-download"></i></div>
+                        <div class="step-label">Download</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="compressor-app">
+                <!-- Left Panel: Upload & Settings -->
+                <div class="app-panel settings-panel">
+                    <div class="panel-card">
+                        <!-- Upload Area -->
+                        <div class="upload-container" id="uploadArea">
+                            <div class="upload-area">
+                                <div class="upload-icon">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                </div>
+                                <h3>Drag & drop your image here</h3>
+                                <p>or</p>
+                                <label for="fileInput" class="upload-button">
+                                    <i class="fas fa-folder-open"></i> Browse Files
+                                </label>
+                                <input type="file" id="fileInput" class="file-input" accept="image/*">
+                                <div class="upload-limits">
+                                    <span><i class="fas fa-info-circle"></i> Max size: 20MB</span>
+                                    <span><i class="fas fa-check-circle"></i> Supported: JPG, PNG, WebP, SVG</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Compression Settings -->
+                        <div class="settings-container" id="compressionOptions" style="display: none;">
+                            <div class="settings-header">
+                                <h3><i class="fas fa-sliders-h"></i> Compression Settings</h3>
+                                <div class="help-text">Find the perfect balance between file size and image quality</div>
+                            </div>
+                            
+                            <!-- Format Selector -->
+                            <div class="setting-group">
+                                <div class="setting-label">
+                                    <span>Output Format</span>
+                                    <div class="tooltip-icon" data-tooltip="Choose the best format for your needs. JPEG for photos, PNG for transparency, WebP for web">
+                                        <i class="fas fa-question-circle"></i>
+                                    </div>
+                                </div>
+                                <div class="format-selector">
+                                    <div class="format-options">
+                                        <input type="radio" name="format" id="jpeg-format" value="jpeg" checked>
+                                        <label for="jpeg-format" class="format-option">
+                                            <div class="format-icon jpeg-icon">
+                                                <i class="fas fa-file-image"></i>
+                                            </div>
+                                            <div class="format-text">
+                                                <span class="format-name">JPEG</span>
+                                                <span class="format-tag">photos</span>
+                                            </div>
+                                        </label>
+                                        
+                                        <input type="radio" name="format" id="png-format" value="png">
+                                        <label for="png-format" class="format-option">
+                                            <div class="format-icon png-icon">
+                                                <i class="fas fa-image"></i>
+                                            </div>
+                                            <div class="format-text">
+                                                <span class="format-name">PNG</span>
+                                                <span class="format-tag">transparency</span>
+                                            </div>
+                                        </label>
+                                        
+                                        <input type="radio" name="format" id="webp-format" value="webp">
+                                        <label for="webp-format" class="format-option">
+                                            <div class="format-icon webp-icon">
+                                                <i class="fas fa-globe"></i>
+                                            </div>
+                                            <div class="format-text">
+                                                <span class="format-name">WebP</span>
+                                                <span class="format-tag">best for web</span>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Compression Level -->
+                            <div class="setting-group">
+                                <div class="setting-label">
+                                    <span>Compression Level</span>
+                                    <div class="tooltip-icon" data-tooltip="Higher values = smaller file size, lower quality">
+                                        <i class="fas fa-question-circle"></i>
+                                    </div>
+                                </div>
+                                <div class="slider-container">
+                                    <input type="range" id="compressionLevelSlider" class="range-slider" min="10" max="95" value="70">
+                                    <div class="slider-value" id="compressionLevelValue">70%</div>
+                                    <div class="slider-labels">
+                                        <span>Higher Quality</span>
+                                        <span>Smaller Size</span>
+                                    </div>
+                                </div>
+                                <div class="target-size">
+                                    <div class="size-indicator">
+                                        <span>Target Size:</span>
+                                        <span id="targetSizeValue" class="size-value">0 KB</span>
+                                    </div>
+                                    <div class="size-indicator">
+                                        <span>Original Size:</span>
+                                        <span id="originalSizeValue" class="size-value">0 KB</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Advanced Settings Toggle -->
+                            <div class="setting-group">
+                                <button class="toggle-advanced" id="toggleAdvanced">
+                                    <i class="fas fa-cog"></i> Advanced Settings
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                
+                                <div class="advanced-settings" id="advancedSettings" style="display: none;">
+                                    <!-- Quality Level -->
+                                    <div class="setting-row">
+                                        <div class="setting-label">
+                                            <span>Quality Level</span>
+                                            <div class="tooltip-icon" data-tooltip="Controls the quality of the compressed image">
+                                                <i class="fas fa-question-circle"></i>
+                                            </div>
+                                        </div>
+                                        <div class="slider-container">
+                                            <input type="range" id="qualitySlider" class="range-slider" min="1" max="100" value="80">
+                                            <div class="slider-value" id="qualityValue">80%</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Max Width -->
+                                    <div class="setting-row">
+                                        <div class="setting-label">
+                                            <span>Max Width</span>
+                                            <div class="tooltip-icon" data-tooltip="Resize the image width (height adjusts proportionally)">
+                                                <i class="fas fa-question-circle"></i>
+                                            </div>
+                                        </div>
+                                        <div class="slider-container">
+                                            <input type="range" id="maxWidthSlider" class="range-slider" min="100" max="4000" value="1920" step="10">
+                                            <div class="slider-value" id="maxWidthValue">1920px</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Option Toggles -->
+                                    <div class="options-toggles">
+                                        <!-- Resize Toggle -->
+                                        <div class="toggle-option">
+                                            <label class="toggle-container">
+                                                <input type="checkbox" id="resizeToggle" checked>
+                                                <span class="toggle-switch"></span>
+                                                <span class="toggle-label">Keep aspect ratio</span>
+                                            </label>
+                                        </div>
+                                        
+                                        <!-- Metadata Toggle -->
+                                        <div class="toggle-option">
+                                            <label class="toggle-container">
+                                                <input type="checkbox" id="metadataToggle" checked>
+                                                <span class="toggle-switch"></span>
+                                                <span class="toggle-label">Strip metadata</span>
+                                                <div class="tooltip-icon" data-tooltip="Remove image metadata for smaller files (EXIF, GPS data, etc.)">
+                                                    <i class="fas fa-question-circle"></i>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Optimize buttons -->
+                            <div class="action-button-group">
+                                <button id="compressBtn" class="action-button">
+                                    <i class="fas fa-compress-alt"></i> Compress
+                                </button>
+                                <button id="smartCompressBtn" class="action-button smart-button">
+                                    <i class="fas fa-magic"></i> Smart Optimize
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Panel: Preview & Results -->
+                <div class="app-panel preview-panel">
+                    <!-- Start Screen -->
+                    <div class="start-screen" id="startScreen">
+                        <div class="start-icon">
+                            <i class="fas fa-file-image"></i>
+                        </div>
+                        <h3>Ready to Compress Your Image</h3>
+                        <p>Upload an image to begin the compression process</p>
+                        <div class="benefits">
+                            <div class="benefit-item">
+                                <i class="fas fa-bolt"></i> Fast Compression
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-shield-alt"></i> 100% Secure
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-sliders-h"></i> Full Control
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Loading indicator -->
+                    <div class="loading-container" id="loadingIndicator" style="display: none;">
+                        <div class="loading-spinner"></div>
+                        <p>Compressing your image...</p>
+                    </div>
+                    
+                    <!-- Smart compression status -->
+                    <div class="smart-compression" id="compressionStatus" style="display: none;">
+                        <h4><i class="fas fa-robot"></i> Finding optimal settings</h4>
+                        <div class="progress-container">
+                            <div class="progress-track">
+                                <div class="progress-fill" id="compressionProgress"></div>
+                            </div>
+                        </div>
+                        <p id="attemptCounter">Attempt 0/10</p>
+                    </div>
+                    
+                    <!-- Image Preview Area -->
+                    <div class="preview-container" id="previewArea" style="display: none;">
+                        <div class="panel-card">
+                            <div class="preview-header">
+                                <h3><i class="fas fa-images"></i> Image Preview</h3>
+                            </div>
+                            
+                            <div class="image-comparison">
+                                <div class="comparison-section">
+                                    <div class="comparison-header">Original</div>
+                                    <div class="image-preview">
+                                        <img src="" id="originalPreview" class="preview-img">
+                                    </div>
+                                    <div class="image-info" id="originalInfo"></div>
+                                </div>
+                                <div class="comparison-divider">
+                                    <i class="fas fa-exchange-alt"></i>
+                                </div>
+                                <div class="comparison-section">
+                                    <div class="comparison-header">Compressed</div>
+                                    <div class="image-preview">
+                                        <img src="" id="compressedPreview" class="preview-img">
+                                    </div>
+                                    <div class="image-info" id="compressedInfo"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Compression Results -->
+                        <div class="panel-card">
+                            <div class="results-header">
+                                <h3><i class="fas fa-chart-pie"></i> Compression Results</h3>
+                            </div>
+                            
+                            <div class="results-card">
+                                <div class="size-comparison">
+                                    <div class="original-file">
+                                        <div class="file-icon original-icon">
+                                            <i class="fas fa-file-image"></i>
+                                        </div>
+                                        <div class="file-details">
+                                            <span class="file-label">Original</span>
+                                            <span class="file-size" id="originalSizeDisplay">0 KB</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="arrow-icon">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </div>
+                                    
+                                    <div class="compressed-file">
+                                        <div class="file-icon compressed-icon">
+                                            <i class="fas fa-file-archive"></i>
+                                        </div>
+                                        <div class="file-details">
+                                            <span class="file-label">Compressed</span>
+                                            <span class="file-size" id="compressedSizeDisplay">0 KB</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="reduction-badge" id="reductionBadge">
+                                        <div class="circle-progress">
+                                            <svg viewBox="0 0 36 36" class="circular-chart">
+                                                <path class="circle-bg"
+                                                    d="M18 2.0845
+                                                    a 15.9155 15.9155 0 0 1 0 31.831
+                                                    a 15.9155 15.9155 0 0 1 0 -31.831"
+                                                />
+                                                <path class="circle"
+                                                    stroke-dasharray="0, 100"
+                                                    d="M18 2.0845
+                                                    a 15.9155 15.9155 0 0 1 0 31.831
+                                                    a 15.9155 15.9155 0 0 1 0 -31.831"
+                                                    id="circleProgress"
+                                                />
+                                            </svg>
+                                            <div class="percentage">
+                                                <span id="reductionPercentage">0%</span>
+                                            </div>
+                                        </div>
+                                        <span class="reduction-label">Reduced</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar-wrapper">
+                                        <div class="progress-left" id="progressLeft"></div>
+                                        <div class="progress-right" id="progressRight"></div>
+                                    </div>
+                                    <div class="progress-label">
+                                        <span id="reductionLabel">0% saved</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Action Buttons -->
+                            <div class="action-buttons" id="actionButtons">
+                                <button class="action-btn secondary-btn" id="tryAgainBtn">
+                                    <i class="fas fa-redo-alt"></i> Try Again
+                                </button>
+                                <button class="action-btn primary-btn" id="downloadBtn">
+                                    <i class="fas fa-download"></i> Download
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Features Section -->
+            <div class="features-section">
+                <h2>Why Use Toolsera's Image Compressor?</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <h3>100% Secure</h3>
+                        <p>All processing happens in your browser. Your images never leave your device.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Lightning Fast</h3>
+                        <p>Advanced algorithms compress your images in seconds, saving you valuable time.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3>Quality Control</h3>
+                        <p>Fine-tune compression settings to find the perfect balance between size and quality.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3>Multiple Formats</h3>
+                        <p>Convert between JPEG, PNG and WebP formats to suit your specific needs.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- How It Works Section -->
+            <div class="how-it-works">
+                <h2>How It Works</h2>
+                <div class="steps-container">
+                    <div class="step-item">
+                        <div class="step-icon">
+                            <i class="fas fa-upload"></i>
+                        </div>
+                        <h3>Upload</h3>
+                        <p>Select or drag & drop your image file</p>
+                    </div>
+                    <div class="step-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-icon">
+                            <i class="fas fa-sliders-h"></i>
+                        </div>
+                        <h3>Configure</h3>
+                        <p>Adjust compression settings as needed</p>
+                    </div>
+                    <div class="step-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-icon">
+                            <i class="fas fa-magic"></i>
+                        </div>
+                        <h3>Compress</h3>
+                        <p>Let our algorithms optimize your image</p>
+                    </div>
+                    <div class="step-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-icon">
+                            <i class="fas fa-download"></i>
+                        </div>
+                        <h3>Download</h3>
+                        <p>Save your optimized image</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-main">
+            <div class="container">
+                <div class="footer-columns">
+                    <div class="footer-column">
+                        <div class="footer-logo">
+                            <i class="fas fa-toolbox"></i>
+                            <h2>Toolsera</h2>
+                        </div>
+                        <p>Free online tools to make your life easier.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="tools.html">All Tools</a></li>
+                            <li><a href="#">Image Tools</a></li>
+                            <li><a href="#">File Converters</a></li>
+                            <li><a href="#">Text Tools</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Popular Tools</h3>
+                        <ul>
+                            <li><a href="#">Image Compressor</a></li>
+                            <li><a href="#">PDF Converter</a></li>
+                            <li><a href="#">Text Case Converter</a></li>
+                            <li><a href="#">Color Picker</a></li>
+                            <li><a href="#">QR Code Generator</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Contact Us</h3>
+                        <p>Have questions or suggestions? We'd love to hear from you!</p>
+                        <a href="index.html#contact" class="footer-contact-btn">
+                            <i class="fas fa-envelope"></i> Get in Touch
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2023 Toolsera. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Tooltip container -->
+    <div id="tooltip" class="tooltip"></div>
+
+    <script src="js/main.js"></script>
+    <script src="js/image-compressor.js"></script>
+</body>
+</html> 
